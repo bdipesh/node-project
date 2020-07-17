@@ -37,7 +37,6 @@ const getAllUsers = (limit: number, offset: number, filters: any) => {
     const conditions = filters && (filters.batch  ) ? {batch: filters.batch || ''} : {}
     const courseFilter = filters && filters.course ? {course: {$in: filters.course}} : {}
     const role = filters && filters.role ? { role: filters.role} : {}
-    console.log(conditions)
     return new Promise((resolve, reject) => {
         User.find({...conditions, ...role, ...courseFilter})
             .then( (users: any) => {
